@@ -8,9 +8,10 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
   console.log("Connected successfully");
 
   const db = client.db("TaskApp");
+  const tasksCollection = db.collection("tasks");
 
   //getting all records
-  db.collection("tasks")
+  tasksCollection
     .find()
     .toArray()
     .then((res) => {
@@ -19,7 +20,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     .catch((err) => console.log(err));
 
   //getting specific records
-  db.collection("tasks")
+  tasksCollection
     .find({ title: "something" })
     .toArray()
     .then((res) => {
@@ -28,7 +29,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     .catch((err) => console.log(err));
 
   //getting an empty array if search param not found
-  db.collection("tasks")
+  tasksCollection
     .find({ title: "somethings" })
     .toArray()
     .then((res) => {
@@ -37,7 +38,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     .catch((err) => console.log(err));
 
   //getting record count
-  db.collection("tasks")
+  tasksCollection
     .find()
     .count()
     .then((res) => {
@@ -48,7 +49,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     });
 
   //getting the first record of the collection
-  db.collection("tasks")
+  tasksCollection
     .findOne()
     .then((res) => {
       console.log(res);
@@ -56,7 +57,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     .catch((err) => console.log(err));
 
   //getting the first record of the collection with search param
-  db.collection("tasks")
+  tasksCollection
     .findOne({ title: "something" })
     .then((res) => {
       console.log(res);
@@ -64,7 +65,7 @@ MongoClient.connect("mongodb://localhost:27017/TaskApp", (err, client) => {
     .catch((err) => console.log(err));
 
   //getting record by unique id
-  db.collection("tasks")
+  tasksCollection
     .findOne({
       _id: new ObjectID("5fde35af3a8ac02e68f898c3"),
     })
