@@ -1,0 +1,1 @@
+Getting reacquainted with nodejs and the backend after spending the year living solely on the Frontend. My roadmap for this refresher includes learning/re-learning node js via the docs, setting up express servers, working with databases (mongodb and PostgreSQL), orms, nodejs/nginx, auth with jwt and passport, realtime apps with socket.io, nodejs/sendgrid, nodejs/aws etc.
