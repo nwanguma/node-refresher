@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing templating with hbs</title>
+ <style> body {color:red;} </style>
+</head>
+<body>
+  {{> header}}
+    <section>{{helloInCaps "hello my man"}}</section>
+    <section>this is the {{page}} page</section>
+    <section>You need to win a grammy</section>
+  {{> footer}}
+</body>
+</html>
