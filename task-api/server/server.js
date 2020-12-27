@@ -4,12 +4,33 @@ const bodyParser = require("body-parser");
 const querystring = require("querystring");
 
 const { Task } = require("./models/task");
+const { User } = require("./models/user");
 
 const port = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.post("/users", (req, res) => {
+  const newUser = new User({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  newUser
+    .save()
+    .then((user) => {
+      res.status(201).send({
+        status: res.status,
+        data: user,
+        message: "success",
+      });
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
 
 app.post("/task", (req, res) => {
   const newTask = new Task({
